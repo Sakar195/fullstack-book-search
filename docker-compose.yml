@@ -4,7 +4,7 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.dev # Use dev Dockerfile for development
+      dockerfile: Dockerfile # Use dev Dockerfile for development
     ports:
       - "8000:8000"
     environment:
@@ -18,7 +18,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev # Use dev Dockerfile for development
+      dockerfile: Dockerfile # Use dev Dockerfile for development
     ports:
       - "3000:3000"
     environment:
