@@ -4,6 +4,8 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV DEBUG=False
+ENV DJANGO_SETTINGS_MODULE=core.settings
 
 WORKDIR /app
 
@@ -22,6 +24,15 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy project files
 COPY . .
 
+# Debug: Check if settings have STATIC_ROOT
+RUN python -c "from core.settings import STATIC_ROOT; print(f'STATIC_ROOT: {STATIC_ROOT}')"
+
+# Create staticfiles directory explicitly
+RUN mkdir -p staticfiles
+
+# Collect static files (production) - do this before switching users
+RUN python manage.py collectstatic --noinput
+
 # Create non-root user
 RUN adduser --disabled-password --gecos '' appuser && \
     chown -R appuser:appuser /app
@@ -29,9 +40,6 @@ USER appuser
 
 # Expose port
 EXPOSE 8000
-
-# Collect static files (production)
-RUN python manage.py collectstatic --noinput
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
