@@ -1,9 +1,40 @@
+"use client";
+
+import { useBookSearch } from "@/hooks/useBookSearch";
+import { Layout } from "@/components/Layout";
+import { Header } from "@/components/Header";
+import { SearchForm } from "@/components/SearchForm";
+import { BookDetails } from "@/components/BookDetails";
+import { ExampleISBNs } from "@/components/ExampleISBNs";
+
 export default function Home() {
+  const { isbn, setIsbn, bookData, loading, error, searchBook, clearSearch } =
+    useBookSearch();
+
+  const handleExampleClick = (exampleIsbn: string) => {
+    searchBook(exampleIsbn);
+  };
+
+  const handleErrorDismiss = () => {
+    clearSearch();
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Book Search App</h1>
-      <p className="mt-4 text-lg">Search for your favorite books!</p>
-      <p>hey hi sup </p>
-    </main>
+    <Layout>
+      <Header />
+
+      <SearchForm
+        isbn={isbn}
+        onIsbnChange={setIsbn}
+        onSearch={() => searchBook()}
+        loading={loading}
+        error={error}
+        onErrorDismiss={handleErrorDismiss}
+      />
+
+      {bookData && <BookDetails book={bookData} />}
+
+      <ExampleISBNs onExampleClick={handleExampleClick} />
+    </Layout>
   );
 }
