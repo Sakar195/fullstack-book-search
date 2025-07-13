@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tzc9q0w=wp)w3abb_&t@3jk!heb6&in5nvgb!zqfg$m9&u$agb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,backend,0.0.0.0,172.20.0.2,172.20.0.3').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,backend,0.0.0.0,172.20.0.2,172.20.0.3,https://frontend-production-373b.up.railway.app').split(',')
 
 
 # Application definition
@@ -136,6 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://frontend-production-373b.up.railway.app"
 ]
 
 # Add Railway frontend domain if available
