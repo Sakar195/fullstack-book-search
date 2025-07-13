@@ -7,8 +7,16 @@ import { Header } from "@/components/Header";
 import { SearchForm } from "@/components/SearchForm";
 
 // Lazy load components that are conditionally rendered or less critical
-const BookDetails = lazy(() => import("@/components/BookDetails").then(module => ({ default: module.BookDetails })));
-const ExampleISBNs = lazy(() => import("@/components/ExampleISBNs").then(module => ({ default: module.ExampleISBNs })));
+const BookDetails = lazy(() =>
+  import("@/components/BookDetails").then((module) => ({
+    default: module.BookDetails,
+  }))
+);
+const ExampleISBNs = lazy(() =>
+  import("@/components/ExampleISBNs").then((module) => ({
+    default: module.ExampleISBNs,
+  }))
+);
 
 // Loading fallback components
 const BookDetailsLoader = () => (
