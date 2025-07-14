@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  // Remove standalone output for local development
+  // output: "standalone",
 
   // Configure external image domains
   images: {
