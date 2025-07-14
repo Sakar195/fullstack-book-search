@@ -25,7 +25,7 @@ export const useBookSearch = () => {
     setBookData(null);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL!;
       console.log("Using API URL:", apiUrl); // Debug log
 
       const fullUrl = `${apiUrl}/api/book/${targetIsbn}/`;
