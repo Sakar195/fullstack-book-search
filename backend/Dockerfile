@@ -24,6 +24,15 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy project files
 COPY . .
 
+# Debug: Check if settings have STATIC_ROOT
+RUN python -c "from core.settings import STATIC_ROOT; print(f'STATIC_ROOT: {STATIC_ROOT}')"
+
+# Create staticfiles directory explicitly
+RUN mkdir -p staticfiles
+
+# Collect static files (production) - do this before switching users
+RUN python manage.py collectstatic --noinput
+
 # Create non-root user
 RUN adduser --disabled-password --gecos '' appuser && \
     chown -R appuser:appuser /app
