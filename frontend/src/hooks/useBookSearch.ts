@@ -28,6 +28,10 @@ export const useBookSearch = () => {
         process.env.NEXT_PUBLIC_API_URL ||
         "https://backend-booksearch.up.railway.app";
       const fullUrl = `${apiUrl}/api/book/${targetIsbn}/`;
+
+      console.log("Using API URL:", apiUrl);
+      console.log("Fetching from:", fullUrl);
+
       const response = await fetch(fullUrl);
 
       if (!response.ok) {
