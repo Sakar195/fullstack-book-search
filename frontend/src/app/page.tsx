@@ -64,9 +64,9 @@ export default function Home() {
       <Header />
 
       {/* Debug: Connection Test */}
-      <div className="mb-8">
+      {/* <div className="mb-8">
         <ConnectionTest />
-      </div>
+      </div> */}
 
       <SearchForm
         isbn={isbn}
