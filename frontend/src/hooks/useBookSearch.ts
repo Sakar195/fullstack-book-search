@@ -15,7 +15,6 @@ export const useBookSearch = () => {
       return;
     }
 
-    // Update ISBN state immediately if searching with a different ISBN
     if (searchIsbn) {
       setIsbn(searchIsbn);
     }
@@ -25,13 +24,15 @@ export const useBookSearch = () => {
     setBookData(null);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL!;
-      console.log("Using API URL:", apiUrl); // Debug log
-
+      const apiUrl =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://backend-booksearch.up.railway.app";
       const fullUrl = `${apiUrl}/api/book/${targetIsbn}/`;
-      console.log("Fetching from:", fullUrl); // Debug log
-
       const response = await fetch(fullUrl);
+
+      if (!response.ok) {
+        throw new Error("Book not found or API error");
+      }
 
       console.log("Response status:", response.status); // Debug log
 
