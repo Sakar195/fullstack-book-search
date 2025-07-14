@@ -16,6 +16,12 @@ export const BookCover = ({ cover, title, className = "" }: BookCoverProps) => {
           fill
           className="object-cover rounded-lg shadow-md"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
+          quality={75}
+          unoptimized={true}
+          onError={() => {
+            console.log("Image failed to load:", cover);
+          }}
         />
       </div>
     );
