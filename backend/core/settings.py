@@ -114,6 +114,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ALLOWED_HOSTS = [
+    'backend-booksearch.up.railway.app',
+    'localhost',
+]
+
 
 # CORS settings - allow frontend origins
 CORS_ALLOWED_ORIGINS = [
