@@ -24,9 +24,15 @@ export const useBookSearch = () => {
     setBookData(null);
 
     try {
-      const apiUrl =
+      let apiUrl =
         process.env.NEXT_PUBLIC_API_URL ||
         "https://backend-booksearch.up.railway.app";
+
+      // Ensure the API URL has the protocol
+      if (!apiUrl.startsWith("http://") && !apiUrl.startsWith("https://")) {
+        apiUrl = `https://${apiUrl}`;
+      }
+
       const fullUrl = `${apiUrl}/api/book/${targetIsbn}/`;
 
       console.log("Using API URL:", apiUrl);
