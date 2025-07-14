@@ -119,6 +119,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://booksearch.up.railway.app"
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 RAILWAY_FRONTEND_URL = os.environ.get('RAILWAY_FRONTEND_URL')
