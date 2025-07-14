@@ -5,6 +5,7 @@ import { useBookSearch } from "@/hooks/useBookSearch";
 import { Layout } from "@/components/Layout";
 import { Header } from "@/components/Header";
 import { SearchForm } from "@/components/SearchForm";
+import { ConnectionTest } from "@/components/ConnectionTest";
 
 // Lazy load components that are conditionally rendered or less critical
 const BookDetails = lazy(() =>
@@ -61,6 +62,11 @@ export default function Home() {
   return (
     <Layout>
       <Header />
+
+      {/* Debug: Connection Test */}
+      <div className="mb-8">
+        <ConnectionTest />
+      </div>
 
       <SearchForm
         isbn={isbn}

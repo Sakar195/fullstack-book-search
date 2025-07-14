@@ -31,20 +31,42 @@ export const useBookSearch = () => {
       console.log("Using API URL:", apiUrl);
       console.log("Fetching from:", fullUrl);
 
-      const response = await fetch(fullUrl);
+      const response = await fetch(fullUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("Response status:", response.status);
+      console.log(
+        "Response headers:",
+        Object.fromEntries(response.headers.entries())
+      );
 
       if (!response.ok) {
-        throw new Error("Book not found or API error");
-      }
-
-      console.log("Response status:", response.status); // Debug log
-
-      if (!response.ok) {
-        throw new Error("Book not found or API error");
+        // Try to get error details from response
+        let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+        try {
+          const errorData = await response.json();
+          console.log("Error response data:", errorData);
+          errorMessage = errorData.error || errorData.detail || errorMessage;
+        } catch {
+          // If response is not JSON, try to get text
+          try {
+            const errorText = await response.text();
+            console.log("Error response text:", errorText);
+            if (errorText) errorMessage = errorText;
+          } catch {
+            console.log("Could not parse error response");
+          }
+        }
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
-      console.log("Response data:", data); // Debug log
+      console.log("Response data:", data);
       setBookData(data);
     } catch (err) {
       console.error("Search error:", err); // Debug log
