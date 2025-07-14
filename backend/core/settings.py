@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tzc9q0w=wp)w3abb_&t@3jk!heb6&in5nvgb!zqfg$m9&u$agb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,backend,0.0.0.0,172.20.0.2,172.20.0.3,https://frontend-production-373b.up.railway.app').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,backend,0.0.0.0,172.20.0.2,172.20.0.3,https://booksearch.up.railway.app/').split(',')
 
 
 # Application definition
