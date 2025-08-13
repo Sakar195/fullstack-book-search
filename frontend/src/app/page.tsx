@@ -5,9 +5,7 @@ import { useBookSearch } from "@/hooks/useBookSearch";
 import { Layout } from "@/components/Layout";
 import { Header } from "@/components/Header";
 import { SearchForm } from "@/components/SearchForm";
-import { ConnectionTest } from "@/components/ConnectionTest";
 
-// Lazy load components that are conditionally rendered or less critical
 const BookDetails = lazy(() =>
   import("@/components/BookDetails").then((module) => ({
     default: module.BookDetails,
@@ -19,7 +17,6 @@ const ExampleISBNs = lazy(() =>
   }))
 );
 
-// Loading fallback components
 const BookDetailsLoader = () => (
   <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
     <div className="animate-pulse">
@@ -62,11 +59,6 @@ export default function Home() {
   return (
     <Layout>
       <Header />
-
-      {/* Debug: Connection Test */}
-      {/* <div className="mb-8">
-        <ConnectionTest />
-      </div> */}
 
       <SearchForm
         isbn={isbn}
