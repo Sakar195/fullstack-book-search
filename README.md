@@ -36,11 +36,6 @@ A modern, responsive web application that allows users to search for books using
 - **Server**: Gunicorn for production
 - **Deployment**: [Railway](https://railway.app/) (Free tier, no international card required)
 
-### DevOps & Deployment
 
-- **Platform**: [Railway](https://railway.app/)
-- **Containerization**: Docker (separate containers for frontend and backend)
-- **CORS**: Configured for cross-origin requests
-- **Environment Variables**: Secure configuration management
 
 
