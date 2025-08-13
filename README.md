@@ -2,10 +2,7 @@
 
 A modern, responsive web application that allows users to search for books using ISBN numbers and retrieve detailed information from the Open Library API.
 
-## 🌐 Live Demo
 
-- **Frontend**: [https://booksearch.up.railway.app](https://booksearch.up.railway.app)
-- **Backend API**: [https://backend-booksearch.up.railway.app](https://backend-booksearch.up.railway.app)
 
 ## ✨ Features
 
